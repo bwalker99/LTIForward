@@ -1,0 +1,42 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head><title>Invoke LTI</title>
+<style>
+   body,p,td,li { font-family: Verdana, Arial, Sans Serif;font-size: 12px; }
+</style>
+</head>
+<body>
+
+<h3>Invoke LTI</h3>
+<p>InvokeLTI is a utility that can be used to do the heavy lifting of LTI authentication. 
+It can be used as front end to a third-party Tool Provider (TP) that is written in another language
+(for example .Net) that may not have strong LTI integration. </p>
+
+<p>The premise is that the Invoke LTI procedure is called from a Tool Consumer (TC), such as an LMS. 
+It creates a cookie whose value is the custom parameters that are passed in from the TC. Invoke LTI 
+then forwards control to the TP. The TP must be able to read the cookie and extract the parameters that it needs to offer the service. </p>
+
+<p>Note that the presence of the cookie is proof of authentication to the TP. The cookie lifespan should be 
+set to something short: 5 - 10 seconds, enough time for the TP to read it. The cookie will need to be managed
+in terms of the domain that it is valid for. The server that run Invoke LTI will probably be different
+from the server that runs the TP. The assumption is that they must be in the same domain, but not the same server. 
+Of course if the TP and InvokeLTI are on the same server, the domain can be left blank, otherwise it
+may be need to set to something like '.myschool.edu'.      
+ 
+<p>InvokeLTI is a java servlet delivered as a war file. It has been tested on Tomcat 7 on Windws and Linux.
+All library should be included. The InvokeLTI.properties file can be edited, and servlet application restarted
+to customize. </p>
+
+<p>Possible issues/enhancements:
+<ul>
+<li>Cookie needs be encrypted</li>
+<li>May need more parameters than are provided by the custom parameters of LTI.</li>
+<li>If many parameters are needed, cookie may not be able to hold all values.</li>
+<li>May still be issues with invoking appliction on different server</li>
+
+</ul>         
+ 
+ 
+</body>
+</html>
