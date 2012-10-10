@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     version="2.4">
 
-  <display-name>LTI - Invoke - Demo</display-name>
+  <display-name>LTIForward - Demo</display-name>
   <description>
-     LTI - Invoke - Demo
+     LTIForward - Demo
   </description>
 
 <!-- JSPC servlet mappings start -->
@@ -18,13 +18,13 @@
   </servlet>
 
  <servlet>
-    <servlet-name>InvokeLTI</servlet-name>
-    <servlet-class>ca.ubc.med.lti.Invoke</servlet-class>
+    <servlet-name>LTIForward</servlet-name>
+    <servlet-class>ca.ubc.med.lti.LTIForward</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>InvokeLTI</servlet-name>
-    <url-pattern>/InvokeLTI</url-pattern>
+    <servlet-name>LTIForward</servlet-name>
+    <url-pattern>/LTIForward</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
