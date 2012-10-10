@@ -29,6 +29,7 @@ import org.apache.log4j.Logger;
  * @author Bob Walker robert.walker@ubc.ca
  *
  */
+
 public class Login  extends HttpServlet {	
 	
 	String user = null; // calling user.
@@ -116,11 +117,11 @@ public class Login  extends HttpServlet {
 		  
 /**
  * 
- * @return
+ * @return A map of the properties values in the properties file.
  */
 	public static HashMap<String,String> getProperties() { 
 		HashMap<String,String> props = new HashMap<String,String>();
-		ResourceBundle bundle = ResourceBundle.getBundle ("InvokeLTI");
+		ResourceBundle bundle = ResourceBundle.getBundle ("LTIForward");
 		Enumeration<String> e = bundle.getKeys();
 		while (e.hasMoreElements()) {
 			String key =  e.nextElement(); 
