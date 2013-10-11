@@ -101,7 +101,14 @@ public class Login  extends HttpServlet {
 		
 			  }
 			  		  
-		  
+		  /**
+		   * Write a cookie to the Response object
+		   * @param response
+		   * @param cookieName
+		   * @param cookieValue
+		   * @param cookieDomain
+		   * @param cookiePath
+		   */
 		  private void writeCookie(HttpServletResponse response,String cookieName,String cookieValue, String cookieDomain, String cookiePath) {
 			  
 			  Cookie cookie = new Cookie(cookieName,cookieValue);
