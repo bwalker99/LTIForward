@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
 public class Login  extends HttpServlet {	
 	
 	String user = null; // calling user.
-	String pass = null; // calling user.
+	String pass = null; // calling user password.
 	private int cookie_lifespan = 120;
 	private String cookie_name;
 	private String cookie_domain;
