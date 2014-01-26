@@ -29,6 +29,8 @@ import org.apache.log4j.Logger;
  * custom parameters of the LTI call.  
  *  
  * @author Bob Walker robert.walker@ubc.ca
+ * 
+ * Test Test
  *
  */
 
@@ -89,7 +91,14 @@ public class LTIForward  extends HttpServlet {
 		  blackboard.blti.message.BLTIMessage msg = blackboard.blti.provider.BLTIProvider.getMessage( request );
 		  String key = msg.getKey();
 		  log.debug("Key from provider = " + key);
-			  
+		  
+		  log.debug("System Params:");
+		  Enumeration<String> E = request.getParameterNames();
+		  while (E.hasMoreElements()) { 
+			  String param = E.nextElement();
+			  log.debug("  ->" + param + "=" + request.getParameter(param));
+			  }
+				   			   			  
 		  if ( blackboard.blti.provider.BLTIProvider.isValid( msg, mysecret ) ) { // authenticated.
 
 			  log.debug("Successfully authenticated using LTI...");
@@ -111,13 +120,7 @@ public class LTIForward  extends HttpServlet {
 				log.debug("writing cookie with value:" + values);
 			    writeCookie(response,cookie_name,values,cookie_domain);
 				    
-			    log.debug("System Params:");
-				Enumeration<String> E = request.getParameterNames();
-				while (E.hasMoreElements()) { 
-				      String param = E.nextElement();
-				      log.debug(param + "=" + request.getParameter(param));
-				      }
-					   			   
+
 				log.debug("Redirecting to " + forward);
 			    request.setAttribute("forward",forward);
 				    					  
@@ -142,16 +145,17 @@ public class LTIForward  extends HttpServlet {
 			  
 		  else {   // Not authenticated.				  
 			  log.error("Authentication failed.");
-		  }	 
+		
 		  
-		  try {
-			  response.sendError( HttpServletResponse.SC_FORBIDDEN, "Bad Basic LTI Launch" );
-		  	}
-	  	  catch (Exception e) { 
-			  log.error(e.getMessage());
-			  e.printStackTrace();
-			}
-				  
+		      try {
+			    response.sendError( HttpServletResponse.SC_FORBIDDEN, "Bad Basic LTI Launch" );
+		  	   }
+	  	      catch (Exception e) { 
+			    log.error(e.getMessage());
+			    e.printStackTrace();
+			  }
+		    }	 	  
+		  
 		}
 
 /**

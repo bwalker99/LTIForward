@@ -29,10 +29,11 @@ import org.apache.log4j.Logger;
  * @author Bob Walker robert.walker@ubc.ca
  *
  */
+
 public class Login  extends HttpServlet {	
 	
 	String user = null; // calling user.
-	String pass = null; // calling user.
+	String pass = null; // calling user password.
 	private int cookie_lifespan = 120;
 	private String cookie_name;
 	private String cookie_domain;
@@ -100,7 +101,14 @@ public class Login  extends HttpServlet {
 		
 			  }
 			  		  
-		  
+		  /**
+		   * Write a cookie to the Response object
+		   * @param response
+		   * @param cookieName
+		   * @param cookieValue
+		   * @param cookieDomain
+		   * @param cookiePath
+		   */
 		  private void writeCookie(HttpServletResponse response,String cookieName,String cookieValue, String cookieDomain, String cookiePath) {
 			  
 			  Cookie cookie = new Cookie(cookieName,cookieValue);
@@ -116,11 +124,11 @@ public class Login  extends HttpServlet {
 		  
 /**
  * 
- * @return
+ * @return A map of the properties values in the properties file.
  */
 	public static HashMap<String,String> getProperties() { 
 		HashMap<String,String> props = new HashMap<String,String>();
-		ResourceBundle bundle = ResourceBundle.getBundle ("InvokeLTI");
+		ResourceBundle bundle = ResourceBundle.getBundle ("LTIForward");
 		Enumeration<String> e = bundle.getKeys();
 		while (e.hasMoreElements()) {
 			String key =  e.nextElement(); 
