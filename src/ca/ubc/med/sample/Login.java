@@ -81,7 +81,7 @@ public class Login  extends HttpServlet {
               if (user.equals(pass)) {
             	  // TODO - encrypt user name in Cookie.
             	  log.debug("User passed authentication: " + user + "/" + pass);
-      		      String cookieValue="studentid=" + user + "&id=" + id;
+      		      String cookieValue="name=" + user + "&id=" + id;
 				  log.debug("writing cookie...");
 			      writeCookie(response,cookie_name,cookieValue,cookie_domain,cookie_path);            	  
             	  log.info("Writing cookie for " + user  + ". Lifespan: " + cookie_lifespan);

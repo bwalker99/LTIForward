@@ -27,6 +27,7 @@
 <b>Login</b><br/>
 
 <form action="Login">
+
 <table><tr>
 <td>User:</td><td> <input type="text" name="user"/></td></tr>
 <td>Pass: </td><td> <input type="password" name="pass"/></td></tr>

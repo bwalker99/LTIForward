@@ -72,6 +72,7 @@ public class LTIForward  extends HttpServlet {
 		private_key = props.get("hash.privatekey");
 			
 		log.info("Servlet Init:\n forward=" + forward + " cookie " + cookie_name + 
+				
 				 " lifespan(seconds)=" + cookie_lifespan);
 		}
 		
@@ -115,7 +116,8 @@ public class LTIForward  extends HttpServlet {
 				    	if (entry.getKey().toUpperCase().equals("forward"))
 				    		forward = entry.getValue();
 				    }
-				log.debug("writing cookie...");
+				values = values + "&name=" + request.getParameter("user_id");
+				log.debug("writing cookie with value:" + values);
 			    writeCookie(response,cookie_name,values,cookie_domain);
 				    
 
@@ -159,6 +161,7 @@ public class LTIForward  extends HttpServlet {
 /**
  * 	Write the cookie. 
  *  TODO - must encrypt cookie.... 		  
+ *  
  */
 	  private void writeCookie(HttpServletResponse response,String cookieName,String value,String domain) {
 			  

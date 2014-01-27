@@ -45,7 +45,7 @@
   else { 
 	  String cookieValue = myCookie.getValue();
 	  String user = null,imagename = null;
-	  out.println("Original cookie value:" + myCookie.getValue() +  "<br/><br/>");
+	  out.println("Original cookie value:" + myCookie.getValue() +  " Expires in: " + myCookie.getMaxAge() + " seconds.<br/><br/>");
 	  	  
 	  java.util.StringTokenizer st = new java.util.StringTokenizer(cookieValue,"&");
 	  while (st.hasMoreElements()) {
@@ -54,7 +54,7 @@
 			if (temp.substring(0,pos).equalsIgnoreCase("id"))
 				imagename = temp.substring(pos+1);
 			
-			if (temp.substring(0,pos).equalsIgnoreCase("studentid"))
+			if (temp.substring(0,pos).equalsIgnoreCase("name"))
 				user=temp.substring(pos+1);
 				
 		   }
@@ -66,7 +66,10 @@
 
 %>
  
- <br/><br/><a href="main.jsp">Return to Calling page</a>
+ <br/><br/>
+ <a href="showimage.jsp">Refresh this page.</a><br/>
+ <a href="main.jsp">Return to Login page</a>
+ 
  
 </body>
 </html>
