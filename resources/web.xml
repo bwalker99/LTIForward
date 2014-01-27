@@ -17,7 +17,8 @@
     <servlet-class>ca.ubc.med.sample.Login</servlet-class>
   </servlet>
 
-    <servlet-name>LTIForward</servlet-name>
+<servlet>
+   <servlet-name>LTIForward</servlet-name>
     <servlet-class>ca.ubc.med.lti.LTIForward</servlet-class>
   </servlet>
 
